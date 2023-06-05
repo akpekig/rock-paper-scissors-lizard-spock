@@ -1,8 +1,7 @@
-import { fileURLToPath, URL } from 'node:url'
-
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import vueJsx from '@vitejs/plugin-vue-jsx'
+import { fileURLToPath, URL } from 'node:url';
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import vueJsx from '@vitejs/plugin-vue-jsx';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -18,9 +17,8 @@ export default defineConfig({
         additionalData: `
           @import "@/assets/scss/_variables.scss";
           @import "@/assets/scss/_mixins.scss";
-          @import "@/assets/scss/_common.scss";
         `
       }
     }
   }
-})
+});
