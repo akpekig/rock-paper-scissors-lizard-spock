@@ -1,13 +1,17 @@
 // Display
 .hidden {
-    display: none !important;
+  display: none !important;
 }
 
 .sr {
-    position: absolute;
-    height: 1px;
-    width: 1px;
-    overflow: hidden;
-    clip: rect(1px, 1px, 1px, 1px);
-    margin: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute;
+  margin: 0 !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.margin-x-auto {
+  margin: 0 auto;
 }

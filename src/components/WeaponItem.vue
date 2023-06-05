@@ -23,8 +23,8 @@ button {
   border-bottom-width: 5px;
   border-radius: 100%;
   padding: 0;
-  width: 9rem;
-  height: 9rem;
+  width: 7.5rem;
+  height: 7.5rem;
   overflow: hidden;
   &:before,
   &:after {
