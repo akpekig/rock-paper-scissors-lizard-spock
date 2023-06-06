@@ -1,11 +1,13 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+
 import IconBonusLogo from '@/components/icons/IconBonusLogo.vue';
 import IconLogo from '@/components/icons/IconLogo.vue';
 import { useGameStore } from '@/stores/game';
 
+import PlayGame from './components/PlayGame.vue';
 import RulesModal from './components/RulesModal.vue';
 import WeaponSelection from './components/WeaponSelection.vue';
-import { computed } from 'vue';
 
 const game = useGameStore();
 const mode = computed(() => (game.mode ? 'Bonus' : 'Normal'));
@@ -19,9 +21,12 @@ const mode = computed(() => (game.mode ? 'Bonus' : 'Normal'));
       <p>{{ game.score }}</p>
     </div>
   </header>
-  <main><WeaponSelection /></main>
+  <main>
+    <WeaponSelection v-if="game.state == 0" />
+    <PlayGame v-else />
+  </main>
   <footer>
-    <button @click="game.toggleMode" class="footer-button" aria-label="mode">{{ mode }}</button>
+    <button @click="game.toggleMode" class="button" aria-label="mode">{{ mode }}</button>
     <RulesModal />
   </footer>
 </template>

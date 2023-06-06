@@ -15,6 +15,8 @@ export const useGameStore = defineStore('game', () => {
 
   const mode = ref(false);
   const trigger = ref(0);
+  const state = ref(0);
+  const user = ref();
 
   /* Random computer selection */
   const computer = computed(
@@ -32,31 +34,60 @@ export const useGameStore = defineStore('game', () => {
     /**
      * Set outcome based on choice
      */
-    if (typeof score.value === 'number' && computer.value) {
-      if (weapons[choice].includes(computer.value)) {
-        score.value++;
-      } else if (weapons[computer.value].includes(choice)) {
-        score.value--;
+    /* Start game */
+    state.value = 1;
+    /* Set user choice */
+    user.value = choice;
+    setTimeout(() => {
+      if (computer.value == choice) {
+        /* Draw */
+        return (state.value = 4);
       }
-    }
+      if (typeof score.value === 'number' && computer.value) {
+        if (weapons[choice].includes(computer.value)) {
+          /* Win */
+          score.value++;
+          state.value = 2;
+        } else if (weapons[computer.value].includes(choice)) {
+          /* Lose */
+          score.value--;
+          state.value = 3;
+        }
+      }
+    }, 1500);
   }
 
   function playAgain() {
     /**
-     * Trigger computer selection
+     * Trigger computer selection and restart game
      */
     trigger.value++;
+    state.value = 0;
   }
 
   function reset() {
     /**
-     * Reset scores
+     * Reset all
      */
     playAgain();
     trigger.value = 0;
     score.value = 0;
+    state.value = 0;
     localStorage.clear();
   }
 
-  return { weapons, keys, mode, score, computer, trigger, toggleMode, play, playAgain, reset };
+  return {
+    weapons,
+    keys,
+    mode,
+    score,
+    user,
+    computer,
+    trigger,
+    state,
+    toggleMode,
+    play,
+    playAgain,
+    reset
+  };
 });

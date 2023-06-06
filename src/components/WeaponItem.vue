@@ -21,8 +21,8 @@ const icons = {
 </script>
 
 <template>
-  <button @click="game.play(weapon)" :class="weapon">
-    <component :is="icons[weapon]" :title="weapon" />
+  <button @click="game.state == 0 && game.play(weapon)" :class="weapon">
+    <component :is="icons[weapon]" :title="weapon" class="icon" />
   </button>
 </template>
 
@@ -109,6 +109,24 @@ button {
         right: 1rem;
         bottom: 1rem;
         left: 1rem;
+      }
+    }
+  }
+  .choice & {
+    width: 7.5rem;
+    height: 7.5rem;
+    @include breakpoint(desktop) {
+      border-bottom-width: 1rem;
+      width: 17.5rem;
+      height: 17.5rem;
+      &:after {
+        top: 2rem;
+        right: 2rem;
+        bottom: 2rem;
+        left: 2rem;
+      }
+      .icon {
+        transform: scale(2);
       }
     }
   }

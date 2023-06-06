@@ -27,7 +27,7 @@ const toggle = async () => {
 </script>
 
 <template>
-  <button @click="toggle" ref="openModal" class="footer-button modal-button" aria-label="Rules">
+  <button @click="toggle" ref="openModal" class="button modal-button" aria-label="Rules">
     Rules
   </button>
   <div
@@ -63,6 +63,7 @@ button {
   @include absoluteFill;
   display: flex;
   @include spacedCenterColumn;
+  z-index: 999;
   border-radius: $border-radius;
   background: $color-white;
   padding: 4rem 2rem;
