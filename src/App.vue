@@ -5,8 +5,10 @@ import { useGameStore } from '@/stores/game';
 
 import RulesModal from './components/RulesModal.vue';
 import WeaponSelection from './components/WeaponSelection.vue';
+import { computed } from 'vue';
 
 const game = useGameStore();
+const mode = computed(() => (game.mode ? 'Bonus' : 'Normal'));
 </script>
 
 <template>
@@ -19,7 +21,10 @@ const game = useGameStore();
     </div>
   </header>
   <main><WeaponSelection /></main>
-  <footer><RulesModal /></footer>
+  <footer>
+    <button @click="game.toggleMode" class="footer-button" aria-label="mode">{{ mode }}</button>
+    <RulesModal />
+  </footer>
 </template>
 
 <style scoped lang="scss">
@@ -62,6 +67,14 @@ header {
       font-size: 4rem;
       line-height: 1;
     }
+  }
+}
+footer {
+  display: flex;
+  @include spacedCenterColumn;
+  align-items: stretch;
+  @include breakpoint(desktop) {
+    margin-left: auto;
   }
 }
 </style>

@@ -15,3 +15,21 @@
 .margin-x-auto {
   margin: 0 auto;
 }
+
+.margin-left-8-desktop {
+  @include breakpoint(desktop) {
+    margin-left: 8rem;
+  }
+}
+
+.footer-button {
+  border: none;
+  border-radius: $border-radius;
+  padding: 0.75rem 2rem;
+  font-family: inherit;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  @include breakpoint(desktop) {
+    transform: scale(1.0625);
+  }
+}

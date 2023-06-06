@@ -27,7 +27,9 @@ const toggle = async () => {
 </script>
 
 <template>
-  <button @click="toggle" ref="openModal" class="modal-button" aria-label="Rules">Rules</button>
+  <button @click="toggle" ref="openModal" class="footer-button modal-button" aria-label="Rules">
+    Rules
+  </button>
   <div
     v-show="display"
     @keyup.esc="toggle"
@@ -50,24 +52,14 @@ button {
   background: none;
   &.modal-button {
     border: 1px solid $color-light-grey;
-    border-radius: $border-radius;
-    padding: 0.75rem 2rem;
     color: $color-light-grey;
-    font-family: inherit;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    @include breakpoint(desktop) {
-      transform: scale(1.0625);
-    }
   }
 }
 .modal {
   position: absolute;
   @include absoluteFill;
   display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-between;
-  align-items: center;
+  @include spacedCenterColumn;
   border-radius: $border-radius;
   background: $color-white;
   padding: 4rem 2rem;
