@@ -1,15 +1,28 @@
 <script setup lang="ts">
 import { useGameStore } from '@/stores/game';
+import IconPaper from './icons/IconPaper.vue';
+import IconScissors from './icons/IconScissors.vue';
+import IconRock from './icons/IconRock.vue';
+import IconLizard from './icons/IconLizard.vue';
+import IconSpock from './icons/IconSpock.vue';
 
 defineProps<{
   weapon: Weapon;
 }>();
+
 const game = useGameStore();
+const icons = {
+  paper: IconPaper,
+  scissors: IconScissors,
+  rock: IconRock,
+  lizard: IconLizard,
+  spock: IconSpock
+};
 </script>
 
 <template>
-  <button @click="game.play(weapon)">
-    <slot name="icon"></slot>
+  <button @click="game.play(weapon)" :class="weapon">
+    <component :is="icons[weapon]" :title="weapon" />
   </button>
 </template>
 
@@ -44,35 +57,35 @@ button {
     box-shadow: inset 0 5px $color-medium-grey;
     background: linear-gradient($color-light-grey, $color-white);
   }
-  &.primary {
+  &.paper {
     border-color: $color-primary;
     &,
     &:before {
       background: $gradient-primary;
     }
   }
-  &.secondary {
+  &.scissors {
     border-color: $color-secondary;
     &,
     &:before {
       background: $gradient-secondary;
     }
   }
-  &.tertiary {
+  &.rock {
     border-color: $color-tertiary;
     &,
     &:before {
       background: $gradient-tertiary;
     }
   }
-  &.bonus-primary {
+  &.spock {
     border-color: $color-bonus-primary;
     &,
     &:before {
       background: $gradient-bonus-primary;
     }
   }
-  &.bonus-secondary {
+  &.lizard {
     border-color: $color-bonus-secondary;
     &,
     &:before {

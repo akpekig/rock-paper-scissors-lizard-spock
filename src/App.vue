@@ -13,8 +13,7 @@ const mode = computed(() => (game.mode ? 'Bonus' : 'Normal'));
 
 <template>
   <header>
-    <h1 v-if="game.mode"><IconBonusLogo title="Rock, Paper, Scissors, Lizard, Spock" /></h1>
-    <h1 v-else><IconLogo title="Rock, Paper, Scissors" /></h1>
+    <h1><component :is="game.mode ? IconBonusLogo : IconLogo" /></h1>
     <div>
       <h2>Score</h2>
       <p>{{ game.score }}</p>

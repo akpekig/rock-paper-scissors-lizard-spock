@@ -5,6 +5,7 @@
     width="162"
     height="99"
   >
+    <title>Rock, Paper, Scissor</title>
     <defs>
       <filter
         id="a"

@@ -3,40 +3,16 @@ import { useGameStore } from '@/stores/game';
 import WeaponItem from './WeaponItem.vue';
 import IconPentagon from './icons/IconPentagon.vue';
 import IconTriangle from './icons/IconTriangle.vue';
-import IconPaper from './icons/IconPaper.vue';
-import IconScissors from './icons/IconScissors.vue';
-import IconRock from './icons/IconRock.vue';
-import IconLizard from './icons/IconLizard.vue';
-import IconSpock from './icons/IconSpock.vue';
+import { computed } from 'vue';
 const game = useGameStore();
+const keys = computed(() => (game.mode ? game.keys : game.keys.slice(0, 3)));
 </script>
 
 <template>
   <section aria-label="Use any button below to start the game">
-    <IconPentagon v-if="game.mode" aria-hidden="true" />
-    <IconTriangle v-else aria-hidden="true" />
+    <component :is="game.mode ? IconPentagon : IconTriangle" aria-hidden="true" />
     <div :class="[game.mode ? 'bonus' : 'normal']">
-      <WeaponItem :weapon="game.keys[1]" class="primary">
-        <template #icon><IconPaper /></template>
-      </WeaponItem>
-      <WeaponItem
-        :weapon="game.keys[2]"
-        class="secondary"
-        :class="{ 'margin-left-8-desktop': !game.mode }"
-      >
-        <template #icon><IconScissors /></template>
-      </WeaponItem>
-      <WeaponItem :weapon="game.keys[0]" class="tertiary" :class="{ 'margin-x-auto': !game.mode }">
-        <template #icon><IconRock /></template>
-      </WeaponItem>
-      <template v-if="game.mode">
-        <WeaponItem :weapon="game.keys[5]" class="bonus-primary">
-          <template #icon><IconSpock /></template>
-        </WeaponItem>
-        <WeaponItem :weapon="game.keys[4]" class="bonus-secondary">
-          <template #icon><IconLizard /></template>
-        </WeaponItem>
-      </template>
+      <WeaponItem v-for="(item, index) in keys" :weapon="item" :key="`key${index}`" />
     </div>
   </section>
 </template>
@@ -58,9 +34,10 @@ section {
     }
   }
   > div {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-content: center;
+    justify-items: center;
     transform: translate(-50%, -55%);
     width: 100%;
     @include breakpoint(desktop) {
@@ -69,24 +46,33 @@ section {
     }
     > * {
       flex: 0 0 auto;
+      cursor: pointer;
       svg {
         vertical-align: middle;
       }
     }
-    &.normal > * {
+    &.normal {
       @include breakpoint(desktop) {
-        transform: scale(1.5);
-        &:last-child {
-          margin-top: 8rem;
+        gap: 8rem;
+        > * {
+          transform: scale(1.5);
         }
+      }
+
+      // Explicitly set pentagon order
+      .paper {
+        order: 0;
+      }
+      .scissors {
+        order: 1;
+      }
+      .rock {
+        grid-column: 1 / -1;
+        order: 2;
       }
     }
     &.bonus {
-      display: grid;
       grid-template-rows: repeat(3, 1fr);
-      grid-template-columns: repeat(2, 1fr);
-      align-content: center;
-      justify-items: center;
       > * svg {
         transform: scale(0.625);
         @include breakpoint(desktop) {
@@ -94,32 +80,32 @@ section {
         }
       }
       // Explicitly set pentagon order
-      .secondary {
+      .scissors {
         grid-column: 1 / -1;
         order: 0;
       }
-      .bonus-primary {
+      .spock {
         order: 1;
         margin-right: 2rem;
         @include breakpoint(desktop) {
           margin-right: 6rem;
         }
       }
-      .primary {
+      .paper {
         order: 2;
         margin-left: 2rem;
         @include breakpoint(desktop) {
           margin-left: 6rem;
         }
       }
-      .bonus-secondary {
+      .lizard {
         order: 3;
       }
-      .tertiary {
+      .rock {
         order: 4;
       }
-      .bonus-secondary,
-      .tertiary {
+      .lizard,
+      .rock {
         margin-top: 1rem;
         @include breakpoint(desktop) {
           margin-top: 3rem;

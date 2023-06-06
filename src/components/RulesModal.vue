@@ -40,8 +40,11 @@ const toggle = async () => {
     tabindex="-1"
   >
     <h2 aria-label="Rules">Rules</h2>
-    <IconBonusRules v-if="game.mode" class="margin-x-auto bonus" />
-    <IconRules v-else class="margin-x-auto" />
+    <component
+      :is="game.mode ? IconBonusRules : IconRules"
+      :class="{ bonus: game.mode }"
+      class="margin-x-auto"
+    />
     <button @click="toggle" aria-label="Close modal"><IconClose aria-hidden="true" /></button>
   </div>
 </template>
@@ -69,7 +72,7 @@ button {
   @include breakpoint(desktop) {
     @include absoluteCenter;
     flex-flow: row wrap;
-    box-shadow: 0 0 10px 100vw hsla(0, 0, 0, 0.5);
+    box-shadow: 0 0 10px 100vw hsla(0, 0%, 0%, 0.5);
     padding: $small-padding;
     max-width: 25rem;
     max-height: 50%;

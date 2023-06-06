@@ -16,12 +16,6 @@
   margin: 0 auto;
 }
 
-.margin-left-8-desktop {
-  @include breakpoint(desktop) {
-    margin-left: 8rem;
-  }
-}
-
 .footer-button {
   border: none;
   border-radius: $border-radius;
