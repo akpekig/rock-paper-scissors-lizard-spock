@@ -10,8 +10,8 @@ const game = useGameStore();
 
 <template>
   <section aria-label="Use any button below to start the game">
-    <IconPentagon v-if="game.mode" aria-hidden="true" ref="background" />
-    <IconTriangle v-else aria-hidden="true" ref="background" />
+    <IconPentagon v-if="game.mode" aria-hidden="true" />
+    <IconTriangle v-else aria-hidden="true" />
     <div>
       <WeaponItem :weapon="game.keys[1]" class="primary">
         <template #icon><IconPaper /></template>
@@ -34,8 +34,7 @@ section {
   > svg,
   div {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    @include absoluteCenter;
   }
   > svg {
     transform: translate(-50%, -50%) scale(0.75);

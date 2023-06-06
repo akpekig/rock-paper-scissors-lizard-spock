@@ -1,7 +1,11 @@
 <script setup lang="ts">
-import { useGameStore } from '@/stores/game';
-import IconLogo from '@/components/icons/IconLogo.vue';
 import IconBonusLogo from '@/components/icons/IconBonusLogo.vue';
+import IconLogo from '@/components/icons/IconLogo.vue';
+import { useGameStore } from '@/stores/game';
+
+import RulesModal from './components/RulesModal.vue';
+import WeaponSelection from './components/WeaponSelection.vue';
+
 const game = useGameStore();
 </script>
 
@@ -14,7 +18,8 @@ const game = useGameStore();
       <p>{{ game.score }}</p>
     </div>
   </header>
-  <main></main>
+  <main><WeaponSelection /></main>
+  <footer><RulesModal /></footer>
 </template>
 
 <style scoped lang="scss">
@@ -30,8 +35,8 @@ header {
   }
   &,
   div {
-    border-radius: 0.5rem;
-    padding: 1rem 2rem;
+    border-radius: $border-radius;
+    padding: $small-padding;
   }
   h1 {
     font-weight: 700;
@@ -42,7 +47,7 @@ header {
     grid-template-rows: repeat(2, min-content);
     justify-items: center;
     align-self: stretch;
-    background: $color-light-grey;
+    background: $color-white;
     h2 {
       grid-column: 1 / -1;
       color: $color-primary;

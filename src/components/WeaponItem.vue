@@ -34,10 +34,7 @@ button {
     content: '';
   }
   &:before {
-    top: 0rem;
-    right: 0rem;
-    bottom: 0rem;
-    left: 0rem;
+    @include absoluteFill;
   }
   &:after {
     top: 1rem;
@@ -45,7 +42,7 @@ button {
     bottom: 1rem;
     left: 1rem;
     box-shadow: inset 0 5px $color-medium-grey;
-    background: linear-gradient(hsl(217, 16%, 87%), $color-light-grey);
+    background: linear-gradient($color-light-grey, $color-white);
   }
   &.primary {
     border-color: $color-primary;
