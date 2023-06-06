@@ -1,23 +1,35 @@
 @mixin breakpoint($size) {
-    @if $size == desktop {
-        @media (min-width: #{$breakpoint-desktop}) {
-            @content;
-        }
+  @if $size == desktop {
+    @media (min-width: #{$breakpoint-desktop}) {
+      @content;
     }
+  }
 
-    @if $size == mobile {
-        @media (min-width: #{$breakpoint-mobile}) {
-            @content;
-        }
+  @if $size == mobile {
+    @media (min-width: #{$breakpoint-mobile}) {
+      @content;
     }
+  }
 }
 
 /* Mixin to target all elements h1 - h6 */
 @mixin headings {
-    @for $index from 1 through 6 {
-        h#{$index} {
-         @content;
-      }
+  @for $index from 1 through 6 {
+    h#{$index} {
+      @content;
     }
+  }
 }
-  
+
+@mixin absoluteFill {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+@mixin absoluteCenter {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
