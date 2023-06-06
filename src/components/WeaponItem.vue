@@ -79,5 +79,25 @@ button {
       background: $gradient-bonus-secondary;
     }
   }
+  .bonus & {
+    width: 5rem;
+    height: 5rem;
+    &:after {
+      top: 0.5rem;
+      right: 0.5rem;
+      bottom: 0.5rem;
+      left: 0.5rem;
+    }
+    @include breakpoint(desktop) {
+      width: 7.5rem;
+      height: 7.5rem;
+      &:after {
+        top: 1rem;
+        right: 1rem;
+        bottom: 1rem;
+        left: 1rem;
+      }
+    }
+  }
 }
 </style>

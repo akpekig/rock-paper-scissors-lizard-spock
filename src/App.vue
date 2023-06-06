@@ -33,6 +33,7 @@ header {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
   border: 3px solid $color-grey;
   width: 100%;
   @include breakpoint(desktop) {
