@@ -6,11 +6,11 @@ This is a solution to the [Rock, Paper, Scissors challenge on Frontend Mentor](h
 
 - [Overview](#overview)
   - [The challenge](#the-challenge)
-  <!-- - [Screenshot](#screenshot)
+  - [Screenshot](#screenshot)
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
-  - [What I learned](#what-i-learned) -->
+  - [What I learned](#what-i-learned)
 - [Author](#author)
 
 ## Overview
@@ -24,14 +24,14 @@ Users should be able to:
 - Maintain the state of the score after refreshing the browser
 - **Bonus**: Play Rock, Paper, Scissors, Lizard, Spock against the computer
 
-<!-- ### Screenshot
+### Screenshot
 
-![](./screenshot.jpg)
+![](./screenshot.png)
 
 ### Links
 
 - Solution URL: [https://github.com/akpekig/rock-paper-scissors-lizard-spock](https://github.com/akpekig/rock-paper-scissors-lizard-spock)
-- Live Site URL: [https://akpekig.github.com/rock-paper-scissors-lizard-spock](https://akpekig.github.com/rock-paper-scissors-lizard-spock)
+- Live Site URL: [https://akpekig.github.io/rock-paper-scissors-lizard-spock/](https://akpekig.github.io/rock-paper-scissors-lizard-spock/)
 
 ## My process
 
@@ -42,11 +42,14 @@ Users should be able to:
 - Flexbox
 - CSS Grid
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
+- [Vue](https://vuejs.org/) - JS library
+- [Pinia](hhttps://pinia.vuejs.org/) - Vue framework
+- [VueUse](https://vueuse.org/) - Vue framework
+- [Sass](https://sass-lang.com/) - For styles
 
-### What I learned -->
+### What I learned
+
+SFC and efficient state maintenance with Pinia and VueUse. Overall challenging but fun experience.
 
 ## Author
 
