@@ -29,6 +29,7 @@ const mode = computed(() => (game.mode ? 'Bonus' : 'Normal'));
     <button v-if="game.state == 0" @click="game.toggleMode" class="button" aria-label="mode">
       {{ mode }}
     </button>
+    <button v-else-if="game.state > 1" @click="game.reset" class="button" aria-label="Reset">Reset</button>
     <RulesModal />
   </footer>
 </template>

@@ -5,6 +5,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "/rock-paper-scissors-lizard-spock/",
   plugins: [vue(), vueJsx()],
   resolve: {
     alias: {
