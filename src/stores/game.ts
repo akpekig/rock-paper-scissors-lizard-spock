@@ -20,7 +20,7 @@ export const useGameStore = defineStore('game', () => {
 
   /* Random computer selection */
   const computer = computed(
-    () => !isNaN(trigger.value) && keys[Math.floor(Math.random() * keys.length)]
+    () => !isNaN(trigger.value) && keys[Math.floor(Math.random() * (mode.value ? keys.length : 3))]
   );
 
   const score = useLocalStorage('score', 0);
