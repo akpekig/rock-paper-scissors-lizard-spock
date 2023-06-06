@@ -1,1 +1,0 @@
-type Weapon = 'rock'|'paper'|'scissors'|'lizard'|'spock';
